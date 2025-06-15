@@ -3,8 +3,10 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-*.env
-*.env.*
+
+# Environment files
+.env
+!.env.example
 
 # Virtual environments
 venv/
