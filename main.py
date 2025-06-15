@@ -16,7 +16,11 @@ import os
 # Load environment variables
 load_dotenv()
 
-client= OpenAI()
+api_key = os.getenv("OPENAI_API_KEY") or st.secrets.get("OPENAI_API_KEY")
+gemini_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
+
+client = OpenAI(api_key=api_key)
+
 # Page settings
 st.set_page_config(
     page_title="📄 Bring Document to Life",
@@ -70,7 +74,7 @@ with st.container():
                 st.success(f"📚 Split into `{len(split_docs)}` text chunks.")
 
             with st.spinner("🔗 Generating embeddings and saving to vector store..."):
-                embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+                embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001",  google_api_key=gemini_key)
                 split_docs = [doc for doc in split_docs if doc.page_content.strip()]
                 if not split_docs:
                     st.error("❌ No valid text found in the PDF to embed. Please upload a different file.")
@@ -104,7 +108,7 @@ st.sidebar.markdown("💡 *This app uses Google Gemini embeddings and Qdrant vec
 
 if st.session_state.chat_ready:
     st.title("🤖 Your Document is ready to chat")
-    embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001",  google_api_key=gemini_key)
     vector_db = QdrantVectorStore.from_existing_collection(
         url="http://localhost:6333",
         embedding=embedding_model,
