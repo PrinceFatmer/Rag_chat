@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.env.*
+
+# Virtual environments
+venv/
+env/
+
+# Streamlit cache
+.streamlit/
+
+# VS Code settings
+.vscode/
+
+# Docker
+*.log
+docker-compose.override.yml
+*.pid
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+*.swp
+*.swo
+
+# Qdrant storage volume (optional, if stored locally)
+qdrant_storage/
