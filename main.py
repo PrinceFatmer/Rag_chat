@@ -1,8 +1,9 @@
 import streamlit as st
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+# from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 from langchain_community.vectorstores import Qdrant
 from langchain_qdrant import QdrantVectorStore
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 import fitz  # PyMuPDF
 from openai import OpenAI
 
