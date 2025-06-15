@@ -1,6 +1,7 @@
 import streamlit as st
 # from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.schema import Document
+# from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain_community.vectorstores import Qdrant
 from langchain_qdrant import QdrantVectorStore
 from langchain.text_splitter import RecursiveCharacterTextSplitter
