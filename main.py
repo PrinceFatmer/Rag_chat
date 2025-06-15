@@ -19,6 +19,7 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY") or st.secrets.get("OPENAI_API_KEY")
 gemini_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
 
+
 client = OpenAI(api_key=api_key)
 
 # Page settings
@@ -30,6 +31,8 @@ st.set_page_config(
 
 st.markdown("<h1 style='text-align: center; color: #4CAF50;'>📄 Bring Document to Life</h1>", unsafe_allow_html=True)
 st.markdown("### Upload a PDF and transform it into a searchable, intelligent knowledge base 💡")
+st.write("🔑 OpenAI API Key (first 5 chars):", api_key[:5] + "..." if api_key else "❌ Not loaded")
+
 
 # Initialize session state
 if "messages" not in st.session_state:
